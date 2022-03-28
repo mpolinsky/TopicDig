@@ -122,7 +122,7 @@ class CNNText(Source):
             #if isinstance(story_container, Soup):
             #    return None, None
             scp = story_container.find('p')[4:]
-            print(f"story_container.find('p')...\n\t{scp}")
+     
             whole_text = ''.join([i.text for i in scp if i.text is not None])
             article_data = [
             self,
