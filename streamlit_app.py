@@ -18,7 +18,7 @@ import random
 # EDIT: before doing NER check time of last scrape and just read in from JSON store instead of rescraping
 # can force rescrape
 # This may take a config to get sources as input
-
+@st.cache()
 def initialize(limit, rando, use_cache=True):
     clusters: dict[str:List[namedtuple]] = dict()
     # This is a container for the source classes.
@@ -190,9 +190,10 @@ with st.form(key='columns_in_form'):
         selections = [i for i in selections if i is not None]
         with st.spinner(text="Digesting...please wait, this will take a few moments...Maybe check some messages or start reading the latest papers on summarization with transformers...."):
             found = False
+            
             # Check if we already have this digest.
             for i in digests:    
-                if set(list(answers.values())) == set(list(i)):
+                if set(selections) == set(list(i)):
                     digestor = digests[i]
                     found = True
                     break
@@ -222,11 +223,11 @@ with st.form(key='columns_in_form'):
 
             # Get displayable digest and digest data
             digestor.build_digest()# only returns for data collection
-        
-            digest = digestor.text
-        if len(digest) == 0:
+            digests[tuple(digestor.user_choices)] = digestor
+            
+        if len(digestor.text) == 0:
             st.write("You didn't select a topic!")    
         else:
             st.write("Your digest is ready:\n")
   
-        st.write(digest)
+        st.write(digestor.text)
