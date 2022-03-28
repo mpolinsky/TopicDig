@@ -154,7 +154,7 @@ NER_API_URL =  "https://api-inference.huggingface.co/models/dbmdz/bert-large-cas
 headers = {"Authorization": f"""Bearer {st.secrets['ato']}"""}
 
 LIMIT = 20 # Controls time and number of clusters.
-USE_CACHE = True
+USE_CACHE = False
 
 if not USE_CACHE:
     print("NOT USING CACHE--ARE YOU GATHERING DATA?")
