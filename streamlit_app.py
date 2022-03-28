@@ -1,19 +1,17 @@
-import requests
-import json
+# streamlit_app.py manages the whole TopicDig process
+
 from typing import List, Set
 from collections import namedtuple
-from functools import lru_cache
-from datetime import datetime as dt
-import os, os.path
+import random
+import requests
 
 from codetiming import Timer
 import streamlit as st
 
-# local code
 from digestor import Digestor
 from source import Source
 from scrape_sources import NPRLite, CNNText, stub
-import random
+
 
 
 def initialize(limit, rando, use_cache=True):
