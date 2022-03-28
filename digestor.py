@@ -191,7 +191,7 @@ class Digestor:
                         print("Summarization error, repeating...")
                         print(e)
                         repeat+=1
-            if summarizaed_chunk is not None:
+            if summarized_chunk is not None:
                 collection_bin.append(summarized_chunk) 
         return collection_bin 
     
