@@ -52,7 +52,7 @@ def initialize(limit, rando, use_cache=True):
             c_data, c_meta = data_source.retrieve_cluster_data() 
         cluster_data.append(c_data)
         cluster_meta.append(article_meta(data_source.source_name, c_meta))
-        st.write(f"Number of clusters from source: {data_source.source_name}\n\t{len(c_data)}")
+        st.info(f"Number of clusters from source: {data_source.source_name}\n\t{len(c_data)}")
     print("Finished...moving on to clustering...")
     cluster_data = cluster_data[0] + cluster_data[1]
     # NER
