@@ -52,7 +52,7 @@ def initialize(limit, rando, use_cache=True):
             c_data, c_meta = data_source.retrieve_cluster_data() 
         cluster_data.append(c_data)
         cluster_meta.append(article_meta(data_source.source_name, c_meta))
-        st.info(f"Number of clusters from source: {data_source.source_name}\n\t{len(c_data)}")
+        st.session_state[data_source.source_name] = f"Number of clusters from source: {data_source.source_name}\n\t{len(c_data)}"
     print("Finished...moving on to clustering...")
     cluster_data = cluster_data[0] + cluster_data[1]
     # NER
@@ -63,12 +63,13 @@ def initialize(limit, rando, use_cache=True):
         # Populate stub entities list
         perform_ner(tup, cache=use_cache)
         generate_clusters(clusters, tup)
-    st.write(f"""Total number of clusters: {len(clusters)}""")
+    st.session_state['num_clusters'] = f"""Total number of clusters: {len(clusters)}"""
     
     # Article stubs tracks all stubs
     # If cluster is unsummarized, its hed's value is the namedtuple stub.  
     # Else reference digestor instance so summary can be found.
     article_dict = {stub.hed: stub for stub in cluster_data}
+    
     
     return article_dict, clusters
 
@@ -179,6 +180,12 @@ if st.button("Refresh topics!"):
 selections = []
 choices = list(clusters.keys())
 choices.insert(0,'None')
+
+st.write(st.session_state['cnn'])
+st.write(st.session_state['npr'])
+st.write(st.session_state['num_clusters'])
+
+
 # Form used to take 3 menu inputs
 with st.form(key='columns_in_form'):
     cols = st.columns(3)
