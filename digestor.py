@@ -174,6 +174,7 @@ class Digestor:
         # API CALLS: consider placing the code from query() into here. * * * *
         for chunk in chunklist:
             safe = False
+            summarized_chunk = None
             with Timer(name=f"{stubhead}_query_time", logger=None):
                 while not safe and repeat < 4:
                     try: # make these digest params. 
@@ -190,7 +191,8 @@ class Digestor:
                         print("Summarization error, repeating...")
                         print(e)
                         repeat+=1
-            collection_bin.append(summarized_chunk) 
+            if summarizaed_chunk is not None:
+                collection_bin.append(summarized_chunk) 
         return collection_bin 
     
 
@@ -207,46 +209,4 @@ class Digestor:
         for each in self.summaries:
             digest.append(' '.join(each.summary_text))
         
-        # Create dict to write out digest data for analysis
-        out_data = {}
-        datetime_str = f"""{dt.now()}"""
-        choices_str = ', '.join(self.user_choices) 
-        digest_str = '\n\n'.join(digest)
-        
-        
-        # This is a long comprehension to store all the fields and values in each summary.
-        # integer: {
-                # name_of_field:value except for source, 
-                         #   which is unhashable so needs explicit handling.
-               #   }
-        summaries = { #  k is a summary tuple, i,p = enumerate(k)
-                # Here we take the first dozen words of the first summary chunk as key
-                c: {
-                # field name : value unless its the source
-                k._fields[i]:p if k._fields[i]!='source' 
-                else 
-                {
-                    'name': k.source.source_name, 
-                    'source_url': k.source.source_url, 
-                    'Summarization" Checkpoint': k.source.source_summarization_checkpoint, 
-                    'NER Checkpoint': k.source.source_ner_checkpoint,
-                } for i,p in enumerate(k)
-                } for c,k in enumerate(self.summaries)}
-
-        out_data['timestamp'] = datetime_str
-        out_data['choices'] = choices_str
-        out_data['digest_text'] = digest_str
-        out_data['article_count'] = len(self.summaries)
-        out_data['digest_length'] = len(digest_str.split(" "))
-        out_data['digest_time'] = self.timer.timers['digest_time']
-        out_data['sum_params'] = {
-                        'token_limit':self.token_limit,
-                        'word_limit':self.word_limit,
-                        'params':self.SUMMARIZATION_PARAMETERS,
-                        }
-        out_data['summaries'] = summaries
-
-        
         self.text = digest_str
-
-        return out_data
