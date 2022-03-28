@@ -217,4 +217,4 @@ with st.form(key='columns_in_form'):
 
         st.write(digestor.text)
     
-st.session_state.items()
+st.write(st.session_state.items())
