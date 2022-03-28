@@ -172,6 +172,10 @@ article_dict, clusters = initialize(LIMIT, USE_CACHE)
 # We call a display function and get the user input.  
 # For this its still streamlit.
 
+# button to refresh topics
+if st.button("Refresh topics!"):
+    article_dict, clusters = initialize(LIMIT, USE_CACHE)  
+    
 selections = []
 choices = list(clusters.keys())
 choices.insert(0,'None')
