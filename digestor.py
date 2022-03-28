@@ -209,6 +209,6 @@ class Digestor:
         for each in self.summaries:
             digest.append(' '.join(each.summary_text))
             
-        digest_str = '\n\t'.join(digest)
+        digest_str = '\n'.join(digest)
         
         self.text = digest_str
