@@ -176,58 +176,60 @@ article_dict, clusters = initialize(LIMIT, USE_CACHE)
 # We now have clusters and cluster data.  Redundancy.
 # We call a display function and get the user input.  
 # For this its still streamlit.
+loop_control = 'y'
+while loop_control == 'y':
+    selections = []
+    choices = list(clusters.keys())
+    choices.insert(0,'None')
+    # Form used to take 3 menu inputs
+    with st.form(key='columns_in_form'):
+        cols = st.columns(3)
+        for i, col in enumerate(cols):
+            selections.append(col.selectbox(f'Make a Selection', choices, key=i))
+        submitted = st.form_submit_button('Submit')
+        if submitted:
+            selections = [i for i in selections if i is not None]
+            with st.spinner(text="Digesting...please wait, this will take a few moments...Maybe check some messages or start reading the latest papers on summarization with transformers...."):
+                found = False
 
-selections = []
-choices = list(clusters.keys())
-choices.insert(0,'None')
-# Form used to take 3 menu inputs
-with st.form(key='columns_in_form'):
-    cols = st.columns(3)
-    for i, col in enumerate(cols):
-        selections.append(col.selectbox(f'Make a Selection', choices, key=i))
-    submitted = st.form_submit_button('Submit')
-    if submitted:
-        selections = [i for i in selections if i is not None]
-        with st.spinner(text="Digesting...please wait, this will take a few moments...Maybe check some messages or start reading the latest papers on summarization with transformers...."):
-            found = False
-            
-            # Check if we already have this digest.
-            for i in digests:    
-                if set(selections) == set(list(i)):
-                    digestor = digests[i]
-                    found = True
-                    break
+                # Check if we already have this digest.
+                for i in digests:    
+                    if set(selections) == set(list(i)):
+                        digestor = digests[i]
+                        found = True
+                        break
 
-            # If we need a new digest
-            if not found:
-                chosen = []
-                # Why not just use answers.values()?
-                for i in selections: # i is supposed to be a list of stubs, mostly one
-                    if i != 'None':
-                        for j in clusters[i]:
-                            if j not in chosen:
-                                chosen.append(j) # j is supposed to be a stub.
+                # If we need a new digest
+                if not found:
+                    chosen = []
+                    # Why not just use answers.values()?
+                    for i in selections: # i is supposed to be a list of stubs, mostly one
+                        if i != 'None':
+                            for j in clusters[i]:
+                                if j not in chosen:
+                                    chosen.append(j) # j is supposed to be a stub.
 
-                # Article dict contains stubs for unprocessed articles and lists of summarized chunks for processed ones.
-                # Here we put together a list of article stubs and/or summary chunks and let the digestor sort out what it does with them,
-                chosen = [i if isinstance(article_dict[i.hed], stub) else article_dict[i.hed] for i in chosen]
-                # Digestor uses 'chosen', passed through 'stubs' to create digest.  
-                # 'user_choicese' is passed for reference.  
-                #    Passing list(answers.values()) includes 'None' choices.
-                digestor = Digestor(timer=Timer(), cache = USE_CACHE, stubs=chosen, user_choices=list(selections))
-                # happens internally but may be used differently so it isn't automatic upon digestor creation.
-                # Easily turn caching off for testing.
-                digestor.digest() # creates summaries and stores them associated with the digest
+                    # Article dict contains stubs for unprocessed articles and lists of summarized chunks for processed ones.
+                    # Here we put together a list of article stubs and/or summary chunks and let the digestor sort out what it does with them,
+                    chosen = [i if isinstance(article_dict[i.hed], stub) else article_dict[i.hed] for i in chosen]
+                    # Digestor uses 'chosen', passed through 'stubs' to create digest.  
+                    # 'user_choicese' is passed for reference.  
+                    #    Passing list(answers.values()) includes 'None' choices.
+                    digestor = Digestor(timer=Timer(), cache = USE_CACHE, stubs=chosen, user_choices=list(selections))
+                    # happens internally but may be used differently so it isn't automatic upon digestor creation.
+                    # Easily turn caching off for testing.
+                    digestor.digest() # creates summaries and stores them associated with the digest
 
-            
 
-            # Get displayable digest and digest data
-            digestor.build_digest()# only returns for data collection
-            digests[tuple(digestor.user_choices)] = digestor
-            
-        if len(digestor.text) == 0:
-            st.write("You didn't select a topic!")    
-        else:
-            st.write("Your digest is ready:\n")
-  
-        st.write(digestor.text)
+
+                # Get displayable digest and digest data
+                digestor.build_digest()# only returns for data collection
+                digests[tuple(digestor.user_choices)] = digestor
+
+            if len(digestor.text) == 0:
+                st.write("You didn't select a topic!")    
+            else:
+                st.write("Your digest is ready:\n")
+
+            st.write(digestor.text)
+    loop_control = input('Y to continue...')
