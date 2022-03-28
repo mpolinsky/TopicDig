@@ -43,6 +43,7 @@ class NPRLite(Source):
         # Test: do the headlines and links zipped together lineup correctly?
         article_tuples = [stub(i[0], i[1], [], self) for i in zip(npr_links, npr_hed)]
         print(f"Number of npr articles: {len(npr_hed)}")
+        st.write(f"Number of npr articles: {len(npr_hed)}")
         return article_tuples, len(npr_hed)
 
     # Returns None if article is only 1 line.
@@ -95,7 +96,7 @@ class CNNText(Source):
         # Take this next line out of this function and place it where this data is used.
         article_tuples = [stub(i[0], i[1], [], self) for i in zip(cnn_links, cnn_heds) if 'Opinion' not in i[1] and 'Analysis' not in i[1]]
         print(f"Number of cnn articles: {len(cnn_heds)}")
-        st.write(f"CNN articles done...")
+        st.write(f"Number of cnn articles: {len(cnn_heds)}")
         return article_tuples, len(cnn_heds)
 
     # Returns None if article is only 1 line.
