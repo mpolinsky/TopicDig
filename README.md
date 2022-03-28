@@ -20,11 +20,11 @@ The method of article selection here is arbitrary.  Pre-assigned article tags co
 **This app explores a few ideas:**
 
 * IR for QA and comprehension
-- A cheap and quick way to explore area of research dominated by large, end-to-end trained models like RAG and NewsSum or w.e....TK
+    * A cheap and quick way to explore area of research dominated by large, end-to-end trained models like RAG and NewsSum or w.e....TK
 * News delivery and access
-** CNN provides summaries but there's a huge difference between being served something and being able to "create" my news.
+    * CNN provides summaries but there's a huge difference between being served something and being able to "create" my news.
 ** Sneaks around headlines...what's in the article?  Headlines can push and pull....
-** removes control over our attention but enables empowered consumption while keeping news production in the hands of pros.
+    * removes control over our attention but enables empowered consumption while keeping news production in the hands of pros.
 * Editorial ideation
 ** Can be used to find implied but uncovered stories by creating news assemblages without knowing eactly what you'll get.  Even though an editor knows what they're currently covering, imagine them writing a sentence describing each article on a piece of paper -- that's not the same as seeing the information in the final articles assembled and juxtaposed like this.  
 * Cross-article information access
