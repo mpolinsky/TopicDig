@@ -1,9 +1,9 @@
 # streamlit_app.py manages the whole TopicDig process
-
 from typing import List, Set
 from collections import namedtuple
 import random
 import requests
+import json
 
 from codetiming import Timer
 import streamlit as st
