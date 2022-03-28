@@ -89,7 +89,7 @@ def perform_ner(tup:namedtuple('article',['link','hed','entities', 'source']), c
         tup.entities.append(i) 
 
 
-
+@st.cache()
 def ner_query(payload):
     print("making a query....")
     data = json.dumps(payload)
