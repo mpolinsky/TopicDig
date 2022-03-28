@@ -1,6 +1,6 @@
 # TopicDig
 
-### TopicDig enables on-the-fly news digest creation via named entity recognition and automatic summarization using HuggingFace's transformers library.
+### TopicDig uses whole article summarization to create topical digests from current news headlines
 
 #### [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/mpolinsky/topicdig/main)
 
