@@ -36,10 +36,12 @@ The method of article selection here is arbitrary.  Pre-assigned article tags co
 * **Evaluating summarization**
     * Difficult to objectively evaluate summarization capability beyond a general level.
 
-[![scraper: gazpacho](https://img.shields.io/badge/scraper-gazpacho-C6422C)](https://github.com/maxhumber/gazpacho)
-
 ****
 
 This application was created as the culmination of a semester of independent graduate research into NLP and transformers.
 
 Original repo for the earlier version of this app is located at https://github.com/mpolinsky/sju_final_project/
+
+
+[![scraper: gazpacho](https://img.shields.io/badge/scraper-gazpacho-C6422C)](https://github.com/maxhumber/gazpacho)
+
