@@ -177,6 +177,13 @@ def show_length_graph():
     #ax.hist(arr, bins=20)
     st.pyplot(fig)
 
+
+def check_for_word_and_word(in_string):
+    m = re.search(r'(\w\w+)\sand\s\1', in_string)
+    if m is not None:
+        return m.group()
+    return None
+    
 # These could be passed through the command line
 # or read from a config file.
 # One of these is needed here for NER and one in Digestor for summarization.
