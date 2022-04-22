@@ -41,11 +41,11 @@ class Digestor:
         ])  = None
 
     # Summarization params:
-    token_limit: int = 512
+    token_limit: int = 1024
     word_limit: int = 400
     SUMMARIZATION_PARAMETERS = {
                                 "do_sample": False,
-                                "use_cache": cache 
+                                "use_cache": cache,
                                 } 
 
     # Inference parameters
@@ -72,9 +72,11 @@ class Digestor:
             # Loop through stubs, collecting data and instantiating 
             # and collecting Summary objects.
             for stub in self.stubs:
+               
                 # Check to see if we already have access to this summary:
                 if not isinstance(stub, stb):
                     self.summaries.append(stub)
+                    print(f"""type(stub): {type(stub)}""")
                 else:
                     # if not:
                     summary_data: List
@@ -137,7 +139,7 @@ class Digestor:
         """Breaks articles into chunks that will fit the desired token length limit"""        
         # Get approximate word count
         words = len(piece.split(' ')) # rough estimate of words.  # words <= number tokens generally.
-        # get number of chunks by idividing number of words by chunk size (word limit) 
+        # get number of chunks by dividing number of words by chunk size (word limit) 
         # Create list of ints to create rangelist from
         base_range = [i*limit for i in range(words//limit+1)]
         # For articles less than limit in length base_range will only contain zero.
@@ -173,6 +175,7 @@ class Digestor:
         # loop list and pass each chunk to the summarization API, storing results.
         # API CALLS: consider placing the code from query() into here. * * * *
         for chunk in chunklist:
+            print(f"""Chunk:\n\t{chunk}""")
             safe = False
             summarized_chunk = None
             with Timer(name=f"{stubhead}_query_time", logger=None):
@@ -191,6 +194,7 @@ class Digestor:
                         print("Summarization error, repeating...")
                         print(e)
                         repeat+=1
+            print(summarized_chunk)            
             if summarized_chunk is not None:
                 collection_bin.append(summarized_chunk) 
         return collection_bin 
@@ -210,3 +214,42 @@ class Digestor:
             digest.append(' '.join(each.summary_text))
             
         self.text = '\n\n'.join(digest) 
+
+        # Create dict to write out digest data for analysis
+        out_data = {}
+        t = dt.now()
+        datetime_str = f"""{t.hour:.2f}:{t.minute:.2f}:{t.second:.2f}"""
+        choices_str = ', '.join(self.user_choices) 
+        digest_str = '\n\t'.join(digest)
+        
+        
+        # This is a long comprehension to store all the fields and values in each summary.
+        # integer: {
+                # name_of_field:value except for source, 
+                         #   which is unhashable so needs explicit handling.
+               #   }
+        summaries = { #  k is a summary tuple, i,p = enumerate(k)
+                # Here we take the first dozen words of the first summary chunk as key
+                c: {
+                # field name : value unless its the source
+                k._fields[i]:p if k._fields[i]!='source' 
+                else 
+                {
+                    'name': k.source.source_name, 
+                    'source_url': k.source.source_url, 
+                    'Summarization" Checkpoint': k.source.source_summarization_checkpoint, 
+                    'NER Checkpoint': k.source.source_ner_checkpoint,
+                } for i,p in enumerate(k)
+                } for c,k in enumerate(self.summaries)}
+
+        out_data['timestamp'] = datetime_str
+        out_data['article_count'] = len(self.summaries)
+        out_data['digest_length'] = len(digest_str.split(" "))
+        out_data['sum_params'] = {
+                        'token_limit':self.token_limit,
+                        'word_limit':self.word_limit,
+                        'params':self.SUMMARIZATION_PARAMETERS,
+                        }
+        out_data['summaries'] = summaries
+
+        return out_data
