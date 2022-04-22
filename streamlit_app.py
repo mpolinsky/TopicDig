@@ -294,6 +294,23 @@ with st.form(key='columns_in_form'):
             # Summarize the findings for all models
             show_length_graph()
             
-            st.subheader("Issues: ")
-            st.write("Repetition:")
+             # Issues section: search for known problems with summaries
+            
+            st.header("Issues: ")
+            st.subheader("Repetition:")
+            rep_check = check_for_word_and_word(digestor.text)
+            if rep_check is not None:
+                st.write(f"Following phrases repeat: {rep_check}")
+                found_index = digestor.text.find(rep_check)
+                st.write("Sample:")
+                st.write(f"{text[found_index-40:found_index+40]}")
+            else:
+                st.write("No repetition detected.")
+              
+            # Same article from different sources
+            st.subheader("Text redundancy: ")
+            for each in digestor.summaries:
+                # check if two source articles share a cluster and not a source.
+                pass
+            st.write("If more than one source have their own versions of the same topic from the same perspective, the result may be reptetive, or it may add nuance and the two summaries may complement each other.")
       
