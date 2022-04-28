@@ -278,7 +278,7 @@ with st.form(key='columns_in_form'):
             st.write("First you'll see a list of links appear below.  These are the links to the original articles being summarized for your digest, so you can get the full story if you're interested, or check the summary against the source.")
             st.write("In a few moments, your machine-generated digest will appear below the links, and below that you'll see an approximate word count of your digest and the time in seconds that the whole process took!")
             st.write("You'll also see a graph showing, for each article and summary, the original and summarized lengths.")
-            st.write("Finally, you will see some possible errors detected in the summaries.  This area of NLP is far from perfection and always developing.  Hopefully this is an interesting step in the path!")
+            st.error("Remember: This only demos news article summarization.  It is not yet completely reliable, and may distort some facts.  An analysis of factfulness is in progress by the app creator.")
             digestor.digest() # creates summaries and stores them associated with the digest
 
 
@@ -298,30 +298,34 @@ with st.form(key='columns_in_form'):
             col2.metric("Digest Length", str(len(digestor.text.split(" "))), 'space-sep tokens' )
             col3.metric("Article Count", str(outdata['article_count']), "articles" )
 
-            st.write("Length reduction:")
+            st.subheader("Length reduction:")
             # Summarize the findings for all summaries
             show_length_graph()
             
             st.info("Thanks, that's all for this digest.")
-
-
-             # Issues section: search for known problems with summaries
             
-           # st.header("Issues: ")
-           # st.subheader("Repetition:")
-           # rep_check = check_for_word_and_word(digestor.text)
-           # if rep_check is not None:
-             #   st.write(f"Following phrases repeat: {rep_check}")
-             #   found_index = digestor.text.find(rep_check)
+            # Issues section: search for known problems with summaries
+            
+           # st.header("Things to look for: ")
+           # st.subheader("Factfulness:")
+           # st.write("Automatically checking the truthfulness of a document isn't a trivial task, and is not implemented here.  Users are encouraged to use their own wider knowledge to look for possible falsehoods.  In the normal news a reader is understood to have a certain amount of understanding to comprehend the news.  This experimental application requires a bit more, but seems promising.")
+            #st.subheader("Repetition:")
+            #rep_check = check_for_word_and_word(digestor.text)
+            #if rep_check is not None:
+            #    st.write(f"Following phrases repeat: {rep_check}")
+            #    found_index = digestor.text.find(rep_check)
             #    st.write("Sample:")
             #    st.write(f"{text[found_index-40:found_index+40]}")
             #else:
             #    st.write("No repetition detected.")
-              
+            #  
             # Same article from different sources
-            #st.subheader("Text redundancy: ")
-            #for each in digestor.summaries:
-                # check if two source articles share a cluster and not a source.
-            #    pass
-            # st.write("If more than one source have their own versions of the same topic from the same perspective, the result may be reptetive, or it may add nuance and the two summaries may complement each other.")
+           # st.subheader("Text redundancy: ")
+           # for each in selections:
+           #     if each != 'None':
+           #         # check if two source articles share a cluster and not a source.
+           #         for i in clusters[each]:
+           #             st.write(i[3].source_name)
+                    
+           # st.write("If more than one source have their own versions of the same topic from the same perspective, the result may be repetitive, or it may add nuance and the two summaries may complement each other.")
       
