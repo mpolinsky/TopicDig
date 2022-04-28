@@ -302,8 +302,8 @@ with st.form(key='columns_in_form'):
             # Summarize the findings for all summaries
             show_length_graph()
             
-            st.info("Thanks, that's all for this digest.)
-        """    
+            st.info("Thanks, that's all for this digest.")
+                    """    
              # Issues section: search for known problems with summaries
             
             st.header("Issues: ")
