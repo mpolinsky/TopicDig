@@ -7,8 +7,6 @@
 The app displays topics, the user chooses up to three, and the app spins up a topical digest scraped from the headlines.
 This project makes heavy use of HuggingFace for NLP, and Gazpacho for web scraping.
 
-The method of article selection here is arbitrary.  Pre-assigned article tags could be used to select groups of articles, or semantic-similarity methods could be used to evaluate the article text.  In practice, an enterprise that would institute such a system would have their articles accessible in a database they own, and would be able to perform background processing to have summaries ready on demand.
-
 **The pipeline:**
 
 * Current headlines are scraped from two news sites.
@@ -20,13 +18,15 @@ The method of article selection here is arbitrary.  Pre-assigned article tags co
 **This app explores a few ideas:**
 
 * **IR for QA and comprehension**
-    * A cheap and quick way to explore area of research dominated by large, end-to-end trained models like RAG and NewsSum or w.e....TK
+    * A cheap and quick way to explore area of research dominated by large, end-to-end trained systems such as RAG and MultiSum.
 * **News delivery and access**
     * CNN provides summaries but there's a huge difference between being served something and being able to "create" my news. 
-    * Sneaks around headlines...what's in the article?  Headlines can push and pull....
-    * removes control over our attention but enables empowered consumption while keeping news production in the hands of pros.
+    * This method of news consumption gets around the headline as the single lure for an article, which avoids the issue of sensational or inaccurate headlines.
+    * Enables empowered information consumption while keeping news production in the hands of professionals.
 * **Editorial ideation**
-    * Can be used to find implied but uncovered stories by creating news assemblages without knowing eactly what you'll get.  Even though an editor knows what they're currently covering, imagine them writing a sentence describing each article on a piece of paper -- that's not the same as seeing the information in the final articles assembled and juxtaposed like this.  
+    * Can be used to find implied but uncovered stories by creating news assemblages without knowing eactly what you'll get.  Even though an editor knows what they're currently covering, imagine them writing a sentence describing each article on a piece of paper -- that's not the same as seeing the information in the final articles assembled and juxtaposed as with this.  
+
+
 * **Cross-article information access**
     * Information that's related and that paints a picture can be broken across multiple articles from different times...There are more stories lying latent in the told stories.
 * **Whole news article summarization pitfalls and windfalls.**
@@ -38,7 +38,7 @@ The method of article selection here is arbitrary.  Pre-assigned article tags co
 
 ****
 
-This application was created as the culmination of a semester of independent graduate research into NLP and transformers.
+This application was originally created as the culmination of a semester of independent graduate research into NLP and transformers.
 
 Original repo for the earlier version of this app is located at https://github.com/mpolinsky/sju_final_project/
 
