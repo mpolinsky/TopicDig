@@ -278,7 +278,7 @@ with st.form(key='columns_in_form'):
             st.write("First you'll see a list of links appear below.  These are the links to the original articles being summarized for your digest, so you can get the full story if you're interested, or check the summary against the source.")
             st.write("In a few moments, your machine-generated digest will appear below the links, and below that you'll see an approximate word count of your digest and the time in seconds that the whole process took!")
             st.write("You'll also see a graph showing, for each article and summary, the original and summarized lengths.")
-            st.error("Remember: This only demos news article summarization.  It is not yet completely reliable, and may distort some facts.  An analysis of factfulness is in progress by the app creator.")
+            st.error("Remember: This only demonstrates news article summarization.  It is not yet completely reliable, and may distort some facts.  An analysis of the system's factfulness is in progress.")
             digestor.digest() # creates summaries and stores them associated with the digest
 
 
