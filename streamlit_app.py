@@ -299,9 +299,11 @@ with st.form(key='columns_in_form'):
             col3.metric("Article Count", str(outdata['article_count']), "articles" )
 
             st.write("Length reduction:")
-            # Summarize the findings for all models
+            # Summarize the findings for all summaries
             show_length_graph()
             
+            st.info("Thanks, that's all for this digest.)
+        """    
              # Issues section: search for known problems with summaries
             
             st.header("Issues: ")
@@ -322,3 +324,4 @@ with st.form(key='columns_in_form'):
                 pass
             st.write("If more than one source have their own versions of the same topic from the same perspective, the result may be reptetive, or it may add nuance and the two summaries may complement each other.")
       
+"""
