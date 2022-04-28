@@ -303,7 +303,8 @@ with st.form(key='columns_in_form'):
             show_length_graph()
             
             st.info("Thanks, that's all for this digest.")
-                    """    
+
+"""    
              # Issues section: search for known problems with summaries
             
             st.header("Issues: ")
