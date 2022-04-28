@@ -18,7 +18,7 @@ from source import Source
 from scrape_sources import NPRLite, CNNText, stub
 
 
-@st.cache()
+
 def initialize(limit, rando, use_cache=True):
     clusters: dict[str:List[namedtuple]] = dict()
     # This is a container for the source classes.
