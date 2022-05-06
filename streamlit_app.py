@@ -212,7 +212,8 @@ article_dict, clusters = initialize(LIMIT, USE_CACHE)
 # We now have clusters and cluster data.  Redundancy?
 
 # Welcome and explainer
-st.title("Welcome to TopicDig!")
+st.title("Welcome to TopicDig")
+st.title("Automatic news article summarization with transformers!")
 st.success(f"You select the topics, we summarize the relevant news and show you a digest, plus some info to help contextualize what the machine did.")
 st.write(f"On the left you'll find a list of topics recently gleaned from current news headlines.  TopicDig lets you assemble digests of these stories using transformers!")
 st.warning("Enjoy, and remember, these summaries contain a few kinds of issues, from untruths to missing attribution or topic sentences.  For more information on truthfulness in automatic summarization with transformers see https://arxiv.org/abs/2109.07958.")
