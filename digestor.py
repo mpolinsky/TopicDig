@@ -159,7 +159,7 @@ class Digestor:
 
 
     # Returns list of summarized chunks instead of concatenating them which loses info about the process.
-    def perform_summarization(self, stubhead, chunklist : List[str], API_URL: str, headers:4 None, cache=True) -> List[str]:
+    def perform_summarization(self, stubhead, chunklist : List[str], API_URL: str, headers:None, cache=True) -> List[str]:
         """For each in chunk_list, appends result of query(chunk) to list collection_bin."""
         collection_bin = []
         repeat = 0
