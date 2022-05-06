@@ -172,7 +172,7 @@ def show_length_graph():
     ax.set_xticks(x)
     ax.set_yticks([i for i in range(0,max(original_length),max(summarized_length))])
     ax.set_xticklabels(labels)
-    ax.set_xlabel(['Article','Summary'])
+    ax.set_xlabel('Article')
     
     plt.title('Original to Summarized Lengths in Space-Separated Tokens')
     #ax.hist(arr, bins=20)
