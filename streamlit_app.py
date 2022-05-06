@@ -162,8 +162,8 @@ def show_length_graph():
     width = 0.35  # the width of the bars
      
     fig, ax = plt.subplots(figsize=(14,8))
-    rects1 = ax.bar(x - width/2, original_length, width,  color='lightgreen',zorder=0)
-    rects2 = ax.bar(x + width/2, summarized_length, width, color='lightblue',zorder=0)
+    rects1 = ax.bar(x - width/2, original_length, width,  label='Original',color='lightgreen',zorder=0)
+    rects2 = ax.bar(x + width/2, summarized_length, width,  label='Summary', color='lightblue',zorder=0)
    
     rects3 = ax.bar(x - width/2, original_length, width, color='none',edgecolor='black', lw=1.25,zorder=1)
     rects4 = ax.bar(x + width/2, summarized_length, width, color='none',edgecolor='black', lw=1.25,zorder=1)
@@ -174,6 +174,7 @@ def show_length_graph():
     ax.set_yticks([i for i in range(0,max(original_length),max(original_length)//10)])
     ax.set_xticklabels(labels)
     ax.set_xlabel('Article')
+    ax.legend(loc='upper right')
     
     plt.title('Original to Summarized Lengths in Space-Separated Tokens')
     #ax.hist(arr, bins=20)
