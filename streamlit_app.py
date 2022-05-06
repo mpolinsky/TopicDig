@@ -156,7 +156,8 @@ def ner_results(ner_object, groups=True, NER_THRESHOLD=0.5) -> List[str]:
 def show_length_graph():
     labels = [i for i in range(outdata['article_count'])]
     original_length = [outdata['summaries'][i]['original_length'] for i in outdata['summaries']]
-    summarized_length = [outdata['summaries'][i]['summary_length'] for i in outdata['summaries']]       
+    summarized_length = [outdata['summaries'][i]['summary_length'] for i in outdata['summaries']]
+    
     x = np.arange(len(labels))  # the label locations
     width = 0.35  # the width of the bars
      
@@ -170,7 +171,7 @@ def show_length_graph():
     # Add some text for labels, title and custom x-axis tick labels, etc.
     ax.set_ylabel('Text Length')
     ax.set_xticks(x)
-    ax.set_yticks([i for i in range(0,max(original_length),max(summarized_length))])
+    ax.set_yticks([i for i in range(0,max(original_length),max(original_length)//10)])
     ax.set_xticklabels(labels)
     ax.set_xlabel('Article')
     
