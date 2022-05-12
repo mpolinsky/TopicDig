@@ -293,7 +293,7 @@ with st.form(key='columns_in_form'):
             st.write("No text to return...huh.")    
         else:
             st.subheader("Your digest:")
-            st.info(digestor.text)
+            st.info(digestor.text.replace('$', '\$'))
     
             st.subheader("Summarization stats:")
             col1, col2, col3 = st.columns(3)
