@@ -301,7 +301,7 @@ with st.form(key='columns_in_form'):
             col2.metric("Digest Length", str(len(digestor.text.split(" "))), 'space-sep tokens' )
             col3.metric("Article Count", str(outdata['article_count']), "articles" )
 
-            st.subheader("Length reduction:")
+            st.subheader("Article compression:")
             # Summarize the findings for all summaries
             show_length_graph()
             
