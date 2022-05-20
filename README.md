@@ -1,6 +1,6 @@
 # TopicDig - create Topic(al) Dig(ests) from current news articles!
 
-### TopicDig uses whole article summarization to create topical digests from current news headlines
+### TopicDig uses whole article summarization with transformers to create topical digests from current news headlines
 
 
 #### [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/mpolinsky/topicdig/main)
