@@ -2,6 +2,7 @@
 
 ### TopicDig uses whole article summarization to create topical digests from current news headlines
 
+
 #### [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/mpolinsky/topicdig/main)
 
 The app displays topics, the user chooses up to three, and the app spins up a topical digest scraped from the headlines.
@@ -18,7 +19,7 @@ This project makes heavy use of HuggingFace for NLP, and Gazpacho for web scrapi
 **This app explores a few ideas:**
 
 * **IR for QA and comprehension**
-    * A cheap and quick way to explore area of research dominated by large, end-to-end trained systems such as RAG and MultiSum.
+    * A cheap and quick way to explore area of research dominated by large, end-to-end trained systems such as RAG and MultiSum.  
 * **News delivery and access**
     * CNN provides summaries but there's a huge difference between being served something and being able to "create" my news. 
     * This method of news consumption gets around the headline as the single lure for an article, which avoids the issue of sensational or inaccurate headlines.
@@ -28,13 +29,11 @@ This project makes heavy use of HuggingFace for NLP, and Gazpacho for web scrapi
 
 
 * **Cross-article information access**
-    * Information that's related and that paints a picture can be broken across multiple articles from different times...There are more stories lying latent in the told stories.
+    * Separate articles contain information that's related and that paints a picture can be broken across multiple articles from different times. There are more stories lying latent across the told stories.
 * **Whole news article summarization pitfalls and windfalls.**
-    * Doing whole articles...technique and results.
+    * Many explorations of automatic summarization produce excessively short summaries or simply truncate articles.  That loses a lot of information that skilled journalists worked to acquire.  This application breaks articles into chunks and concatenates each chunk to better cover the source article.
 * **Community pantry principle**
-    * No free lunch but there is a community pantry.  It only gets you so close.
-* **Evaluating summarization**
-    * Difficult to objectively evaluate summarization capability beyond a general level.
+    * In machine learning it is often said there is no free lunch -- a solution meant for one task may not work at all for another, even a seemingly similar task.  However with transfer learning and model hubs there is a "community pantry" -- it isn't a free lunch but you may be able to adapt a "lunch" from another task without having to start from scratch.
 
 
 ## The basic interface:
