@@ -36,6 +36,18 @@ This project makes heavy use of HuggingFace for NLP, and Gazpacho for web scrapi
 * **Evaluating summarization**
     * Difficult to objectively evaluate summarization capability beyond a general level.
 
+
+## The basic interface:
+<img width="514" alt="Screen Shot 2022-05-20 at 10 50 46 AM" src="https://user-images.githubusercontent.com/30514239/169554841-15a1db7e-9ef9-4221-ae62-14506da1daf4.png">
+
+## What you see when you begin summarization:
+<img width="479" alt="Screen Shot 2022-05-20 at 10 51 11 AM" src="https://user-images.githubusercontent.com/30514239/169554875-734f35e2-66d1-4547-9979-08acc7401124.png">
+
+## What you get: a news digest covering the topics you select!
+<img width="511" alt="Screen Shot 2022-05-20 at 10 51 03 AM" src="https://user-images.githubusercontent.com/30514239/169554884-e9992543-09ed-4f76-84a2-338191534117.png">
+
+
+
 ****
 
 This application was originally created as the culmination of a semester of independent graduate research into NLP and transformers.
