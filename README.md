@@ -1,4 +1,4 @@
-# TopicDig
+# TopicDig - create Topic(al) Dig(ests) from current news articles!
 
 ### TopicDig uses whole article summarization to create topical digests from current news headlines
 
