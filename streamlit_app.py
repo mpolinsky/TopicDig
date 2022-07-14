@@ -311,7 +311,7 @@ with st.form(key='columns_in_form'):
             
            # st.header("Things to look for: ")
            # st.subheader("Factfulness:")
-           # st.write("Automatically checking the truthfulness of a document isn't a trivial task, and is not implemented here.  Users are encouraged to use their own wider knowledge to look for possible falsehoods.  In the normal news a reader is understood to have a certain amount of understanding to comprehend the news.  This experimental application requires a bit more, but seems promising.")
+           # st.write("Automatically checking the truthfulness of a document isn't a trivial task, and is not implemented here.  Users are encouraged to use their own wider knowledge to look for possible falsehoods.  In the normal news a reader is understood to have a certain amount of understanding to comprehend what they are reading.  This experimental application requires a bit more, but seems promising.")
             #st.subheader("Repetition:")
             #rep_check = check_for_word_and_word(digestor.text)
             #if rep_check is not None:
