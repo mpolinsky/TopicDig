@@ -5,7 +5,8 @@
 
 #### [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/mpolinsky/topicdig/main)
 
-The app displays topics, the user chooses up to three, and the app spins up a topical digest scraped from the headlines.
+The app displays topics pulled from current headlines, the user chooses up to three topics, and the app spins up a topical digest scraped and summarized from the source sites.
+
 This project makes heavy use of HuggingFace for NLP, and Gazpacho for web scraping.
 
 **The pipeline:**
