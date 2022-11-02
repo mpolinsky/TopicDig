@@ -123,7 +123,9 @@ class Digestor:
         """Performs summarization inference API call."""
         data = json.dumps(payload)
         response = requests.request("POST", API_URL, headers=headers, data=data)
+        st.write("The below line has the response")
         st.write(response.content.decode("utf-8"))  
+        st.write("The above line has the response")
         return json.loads(response.content.decode("utf-8"))
 
 
