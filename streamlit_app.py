@@ -101,7 +101,7 @@ def perform_ner(tup:namedtuple('article',['link','hed','entities', 'source']), c
 def ner_query(payload):
     data = json.dumps(payload)
     response = requests.request("POST", NER_API_URL, headers=headers, data=data)
-    st.write(response.content.decode("utf-8"))  
+    #st.write(response.content.decode("utf-8"))  
     return json.loads(response.content.decode("utf-8"))
 
 
