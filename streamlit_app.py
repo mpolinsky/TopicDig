@@ -219,8 +219,8 @@ st.success(f"You select the topics, we summarize the relevant news and show you 
 st.write(f"On the left you'll find a list of topics recently gleaned from current news headlines.  TopicDig lets you assemble digests of these stories using transformers!")
 st.warning("Enjoy, and remember, these summaries contain a few kinds of issues, from untruths to missing attribution or topic sentences.  For more information on truthfulness in automatic summarization with transformers see https://arxiv.org/abs/2109.07958.")
 
-st.subheader(f"How it works:")
-st.write(f"""Select 1 to 3 topics from the drop down menus (or type in the topic box to find a topic from the list) and click 'submit' to start generating your digest!""")
+st.header(f"How it works:")
+st.subheader(f"""Select 1 to 3 topics from the drop down menus (or type in the topic box to find a topic from the list) and click 'submit' to start generating your digest!""")
     
 # Provides expandable container for refresh and summarization parameters, currently only chunk size
 with st.expander("See extra options"):
