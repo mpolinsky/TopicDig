@@ -231,7 +231,7 @@ with st.expander("See extra options"):
         article_dict, clusters = initialize(LIMIT, USE_CACHE)      
     st.subheader("Select chunk size: ")
     st.write("Smaller chunks means more of the article included in the summary and a longer digest.")
-    chunk_size = st.select_slider(label="Chunk size", options=[i for i in range(50,801,50)], value=400)
+    chunk_size = st.select_slider(label="Chunk size", options=[i for i in range(50,801,50)], value=750)
  
    
     
