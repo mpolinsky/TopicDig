@@ -1,6 +1,5 @@
 # TopicDig - create Topic(al) Dig(ests) from current news articles
 
-## TopicDig has ended as HuggingFace has discontinued its Inference API.  A new version of the app is not pending but a final report is!
 
 ### TopicDig uses whole article summarization with transformers to create topical digests from current news headlines
 
