@@ -21,7 +21,7 @@ stub.__doc__ = f"""
 
 @dataclass
 class NPRLite(Source):
-    """Implementation of abstract Source class that retrieves via webscraping at text.npr.org/1001"""
+    """Implementation of abstract Source class that retrieves via webscraping at <removed>"""
     # Creates the initial namedtuple that holds the hed, link,
     # and identified entities for each article.
     # Chosen articles will have their data stored in a Summary object.
@@ -47,7 +47,7 @@ class NPRLite(Source):
 
     # Returns None if article is only 1 line.
     def retrieve_article(self, indata: stub) -> Tuple[str, List[Tuple[str, Any]]]:
-        """Retrieves article data from text.npr.org subhead if exists, date, author(s), and whole text"""
+        """Retrieves article data from <rmvd> subhead if exists, date, author(s), and whole text"""
         st.write(f"""Retrieving article from:\n\t{self.source_url[:-5] + indata.link}\n""")
         container = Soup(get(self.source_url[:-5] + indata.link))
         text_container = container.find('div', {'class': "paragraphs-container"}).find('p')
@@ -75,16 +75,16 @@ class NPRLite(Source):
 
 @dataclass
 class CNNText(Source):
-    """Implementation of abstract Source class that retrieves via webscraping at lite.cnn.com"""
+    """Implementation of abstract Source class that retrieves via webscraping at <rmvd>"""
 
     # Creates the initial namedtuple that holds the hed, link,
     # and identified entities for each article.
     # Chosen articles will have their data stored in a Summary object.
     def retrieve_cluster_data(self, limit=None) -> List[namedtuple]:
-        """Creates a stub for each article listed on lite.cnn.com"""
+        """Creates a stub for each article listed on <rmvd>"""
         print("retrieving CNN article stub")
         soup = Soup(get(self.source_url))
-        # Scrape NPR for headlines and links
+        # Scrape for headlines and links
         cnn_heds = [i.text for i in soup.find('div', {'class': 'afe4286c'}).find('a')]
         cnn_links = [i.attrs['href'] for i in soup.find('div', {'class': 'afe4286c'}).find('a')]
         # limit amount of data returned for clustering
@@ -99,7 +99,7 @@ class CNNText(Source):
 
     # Returns None if article is only 1 line.
     def retrieve_article(self, indata: stub) -> Tuple[str, List[Tuple[str, Any]]]:
-        """Retrieves article data from lite.cnn.com: subhead if exists, date, author(s), and whole text"""
+        """Retrieves article data from <rmvd>: subhead if exists, date, author(s), and whole text"""
         print(f"""Retrieving article from:\n\t{self.source_url + indata.link}\n""")
         st.write(f"""Retrieving article from:\n\t{self.source_url + indata.link}\n""")
         repeat = 0
