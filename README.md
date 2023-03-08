@@ -3,6 +3,7 @@
 
 ### TopicDig uses whole article summarization with transformers to create topical digests from current news headlines
 
+#### * TopicDig has run its course, thank you for your interest.  Final summation is forthcoming. 
 
 The app displays topics pulled from current headlines, the user chooses up to three topics, and the app spins up a topical digest scraped and summarized from the source sites.
 
