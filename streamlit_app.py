@@ -21,21 +21,19 @@ from scrape_sources import NPRLite, CNNText, stub
 
 def initialize(limit, rando, use_cache=True):
     clusters: dict[str:List[namedtuple]] = dict()
-    # This is a container for the source classes.
-    # Make sure you handle this.  Whats the deal.
+    # This is a container for the source classes
     sources:List[Source]= [] # Write them and import? Read a config?
-    # FOR NOW ONLY add this explicitly here.  
-    # MUST read in final version though.
-    sources.append(NPRLite(
-        'npr', 
-        'https://text.npr.org/1001', 
+    # Code disabled here
+    sources.append(Source1(
+        '', 
+        '', 
         'sshleifer/distilbart-cnn-12-6',
         #'google/pegasus-multi_news',
         'dbmdz/bert-large-cased-finetuned-conll03-english'
         ))
-    sources.append(CNNText(
-        'cnn',
-        'https://lite.cnn.com', 
+    sources.append(Source2(
+        '',
+        '', 
         'sshleifer/distilbart-cnn-12-6',
         #'google/pegasus-multi_news',
         'dbmdz/bert-large-cased-finetuned-conll03-english'
