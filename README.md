@@ -9,6 +9,12 @@ The app displays topics pulled from current headlines, the user chooses up to th
 
 This project makes heavy use of HuggingFace for NLP, and Gazpacho for web scraping.
 
+
+
+https://github.com/user-attachments/assets/8b236565-7b04-41eb-8bac-19077c838089
+
+
+
 **The pipeline:**
 
 * Current headlines are scraped from two news sites.
